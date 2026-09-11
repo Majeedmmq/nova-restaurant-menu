@@ -1,0 +1,43 @@
+{
+    "name_ar": "مطعم ومطبخ نوفا",
+    "name_en": "NOVA Restaurant & Kitchen",
+
+    "logo": "",
+
+    "description_ar": "تجربة طعام عصرية تجمع بين المذاق الرائع والأجواء الدافئة والأنيقة.",
+    "description_en": "A modern dining experience where great food meets a warm and elegant atmosphere.",
+
+    "phone": "+966500000000",
+
+    "whatsapp": "+966500000000",
+
+    "instagram": "#",
+
+    "address_ar": "طريق الملك فهد، الرياض، المملكة العربية السعودية",
+    "address_en": "King Fahd Road, Riyadh, Saudi Arabia",
+
+    "location": {
+        "city": "Riyadh",
+        "country": "Saudi Arabia",
+        "latitude": 24.7136,
+        "longitude": 46.6753,
+        "google_maps_url": "#"
+    },
+
+    "opening_hours": [
+        {
+            "days_ar": "السبت – الخميس",
+            "days_en": "Saturday – Thursday",
+            "open": "12:00 PM",
+            "close": "12:00 AM"
+        },
+        {
+            "days_ar": "الجمعة",
+            "days_en": "Friday",
+            "open": "1:00 PM",
+            "close": "12:00 AM"
+        }
+    ],
+
+    "active": true
+}

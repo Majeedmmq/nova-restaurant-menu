@@ -1,0 +1,35 @@
+[
+    {
+        "id": "nova-special",
+        "title_ar": "عرض نوفا المميز",
+        "title_en": "NOVA Special",
+        "description_ar": "استمتع بتشكيلة نوفا الخاصة بسعر مميز.",
+        "description_en": "Enjoy our special selection at an exclusive price.",
+        "image": "",
+        "original_price": 45,
+        "offer_price": 35,
+        "start_date": "2026-09-01",
+        "end_date": "2026-09-30",
+        "active": true,
+        "products": [
+            "signature-burger"
+        ]
+    },
+    {
+        "id": "burger-drink-combo",
+        "title_ar": "وجبة البرجر والمشروب",
+        "title_en": "Burger & Drink Combo",
+        "description_ar": "برجر نوفا المميز مع مشروب منعش بسعر خاص.",
+        "description_en": "Signature burger served with a refreshing drink at an exclusive price.",
+        "image": "",
+        "original_price": 59,
+        "offer_price": 49,
+        "start_date": "2026-09-01",
+        "end_date": "2026-09-30",
+        "active": true,
+        "products": [
+            "signature-burger",
+            "iced-coffee"
+        ]
+    }
+]

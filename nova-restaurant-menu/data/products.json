@@ -1,0 +1,147 @@
+[
+    {
+        "id": "signature-burger",
+        "name_ar": "برجر نوفا المميز",
+        "name_en": "Signature Burger",
+        "description_ar": "برجر لحم شهي مع صلصة نوفا الخاصة.",
+        "description_en": "Juicy beef burger with our signature sauce.",
+        "price": 42,
+        "category": "burgers",
+        "image": "",
+        "available": true,
+        "featured": true,
+        "badges": ["popular"],
+        "ingredients": [
+            "Beef",
+            "Lettuce",
+            "Tomato",
+            "Signature Sauce"
+        ],
+        "allergens": [
+            "Gluten",
+            "Milk"
+        ]
+    },
+    {
+        "id": "chicken-burger",
+        "name_ar": "برجر الدجاج",
+        "name_en": "Chicken Burger",
+        "description_ar": "دجاج مقرمش مع الخس والصلصة الخاصة.",
+        "description_en": "Crispy chicken with lettuce and special sauce.",
+        "price": 36,
+        "category": "burgers",
+        "image": "",
+        "available": true,
+        "featured": true,
+        "badges": [],
+        "ingredients": [
+            "Chicken",
+            "Lettuce",
+            "Special Sauce"
+        ],
+        "allergens": [
+            "Gluten",
+            "Milk"
+        ]
+    },
+    {
+        "id": "grilled-chicken",
+        "name_ar": "دجاج مشوي",
+        "name_en": "Grilled Chicken",
+        "description_ar": "دجاج مشوي طري يقدم مع أطباق جانبية طازجة.",
+        "description_en": "Tender grilled chicken served with fresh sides.",
+        "price": 38,
+        "category": "main-courses",
+        "image": "",
+        "available": true,
+        "featured": true,
+        "badges": [],
+        "ingredients": [
+            "Chicken",
+            "Fresh Vegetables"
+        ],
+        "allergens": []
+    },
+    {
+        "id": "truffle-pasta",
+        "name_ar": "باستا الكمأة",
+        "name_en": "Truffle Pasta",
+        "description_ar": "باستا كريمية مع الكمأة وجبن البارميزان.",
+        "description_en": "Creamy pasta with truffle and parmesan.",
+        "price": 45,
+        "category": "main-courses",
+        "image": "",
+        "available": true,
+        "featured": true,
+        "badges": [],
+        "ingredients": [
+            "Pasta",
+            "Truffle",
+            "Parmesan"
+        ],
+        "allergens": [
+            "Gluten",
+            "Milk"
+        ]
+    },
+    {
+        "id": "nova-salad",
+        "name_ar": "سلطة نوفا",
+        "name_en": "NOVA Salad",
+        "description_ar": "سلطة طازجة مع الخضروات وصلصة نوفا.",
+        "description_en": "Fresh salad with vegetables and NOVA dressing.",
+        "price": 28,
+        "category": "starters",
+        "image": "",
+        "available": true,
+        "featured": false,
+        "badges": [],
+        "ingredients": [
+            "Lettuce",
+            "Tomato",
+            "Cucumber",
+            "NOVA Dressing"
+        ],
+        "allergens": []
+    },
+    {
+        "id": "nova-dessert",
+        "name_ar": "حلى نوفا",
+        "name_en": "NOVA Dessert",
+        "description_ar": "حلى ناعم ولذيذ من اختيار الشيف.",
+        "description_en": "A delicious dessert selection from our chef.",
+        "price": 24,
+        "category": "desserts",
+        "image": "",
+        "available": true,
+        "featured": false,
+        "badges": [],
+        "ingredients": [
+            "Cream",
+            "Chocolate"
+        ],
+        "allergens": [
+            "Milk"
+        ]
+    },
+    {
+        "id": "iced-coffee",
+        "name_ar": "قهوة مثلجة",
+        "name_en": "Iced Coffee",
+        "description_ar": "قهوة مثلجة منعشة ومحضرة بعناية.",
+        "description_en": "Refreshing iced coffee prepared with care.",
+        "price": 18,
+        "category": "drinks",
+        "image": "",
+        "available": true,
+        "featured": false,
+        "badges": [],
+        "ingredients": [
+            "Coffee",
+            "Milk"
+        ],
+        "allergens": [
+            "Milk"
+        ]
+    }
+]

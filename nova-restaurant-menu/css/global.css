@@ -1,0 +1,133 @@
+/* ==============================
+   GLOBAL RESET
+============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ==============================
+   HTML
+============================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* ==============================
+   BODY
+============================== */
+
+body {
+    font-family: var(--font-english);
+    background: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+
+/* ==============================
+   ARABIC
+============================== */
+
+body[dir="rtl"] {
+    font-family: var(--font-arabic);
+}
+
+
+/* ==============================
+   FORM ELEMENTS
+============================== */
+
+button,
+input {
+    font: inherit;
+}
+
+
+/* ==============================
+   BUTTON
+============================== */
+
+button {
+    cursor: pointer;
+    border: none;
+}
+
+
+/* ==============================
+   IMAGES
+============================== */
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+/* ==============================
+   LINKS
+============================== */
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* ==============================
+   MAIN APP
+============================== */
+
+#app {
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* ==============================
+   RTL SUPPORT
+============================== */
+
+[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+
+/* ==============================
+   RTL LAYOUT ADJUSTMENTS
+============================== */
+
+[dir="rtl"] .quick-menu-button {
+    align-self: flex-start;
+}
+
+[dir="rtl"] .product-badge {
+    align-self: flex-start;
+}
+
+
+/* ==============================
+   RTL TEXT
+============================== */
+
+[dir="rtl"] input {
+    text-align: right;
+}
+
+/* ==============================
+   CONTAINER
+============================== */
+
+.container {
+    width: min(
+        100% - 32px,
+        var(--container-width)
+    );
+
+    margin-inline: auto;
+}

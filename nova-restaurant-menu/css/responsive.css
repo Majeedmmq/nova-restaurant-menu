@@ -1,0 +1,309 @@
+/* ==============================
+   TABLET
+============================== */
+
+@media (min-width: 768px) {
+
+    .container {
+        width: min(
+            100% - 64px,
+            var(--container-width)
+        );
+    }
+
+
+    /* ==============================
+       PRODUCT GRIDS
+    ============================== */
+
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .visual-products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .search-results-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    /* ==============================
+       OFFERS
+    ============================== */
+
+    .offers-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    /* ==============================
+       RESTAURANT INFORMATION
+    ============================== */
+
+    .restaurant-page-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* ==============================
+   DESKTOP
+============================== */
+
+@media (min-width: 1200px) {
+
+    .container {
+        width: min(
+            100% - 96px,
+            var(--container-width)
+        );
+    }
+
+
+    /* ==============================
+       PRODUCT GRIDS
+    ============================== */
+
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .visual-products-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .search-results-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+
+    /* ==============================
+       OFFERS
+    ============================== */
+
+    .offers-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    /* ==============================
+       RESTAURANT INFORMATION
+    ============================== */
+
+    .restaurant-page-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+/* ==============================
+   MOBILE HEADER
+============================== */
+
+@media (max-width: 767px) {
+
+    .quick-menu-top,
+    .visual-menu-top,
+    .product-details-top,
+    .search-page-top,
+    .offers-top,
+    .restaurant-page-top {
+        gap: var(--space-sm);
+    }
+
+
+    .brand-name {
+        font-size: 20px;
+    }
+
+
+    .brand-subtitle {
+        font-size: 10px;
+    }
+
+
+    .back-button,
+    .language-button {
+        font-size: 13px;
+    }
+
+
+    .language-button {
+        padding: 8px 10px;
+    }
+
+}
+
+/* ==============================
+   MOBILE TYPOGRAPHY
+============================== */
+
+@media (max-width: 767px) {
+
+    .welcome-title {
+        font-size: 28px;
+    }
+
+
+    .quick-menu-title {
+        font-size: 23px;
+    }
+
+
+    .section-title {
+        font-size: 22px;
+    }
+
+
+    .product-details-name {
+        font-size: 27px;
+    }
+
+
+    .search-page-title,
+    .offers-title,
+    .restaurant-page-title {
+        font-size: 28px;
+    }
+
+
+    .visual-category-title,
+    .quick-category-title {
+        font-size: 20px;
+    }
+
+}
+
+/* ==============================
+   MOBILE CATEGORY NAVIGATION
+============================== */
+
+@media (max-width: 767px) {
+
+    .quick-menu-category-list,
+    .visual-menu-category-list,
+    .categories-list {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        -webkit-overflow-scrolling: touch;
+
+        scrollbar-width: none;
+    }
+
+
+    .quick-menu-category-list::-webkit-scrollbar,
+    .visual-menu-category-list::-webkit-scrollbar,
+    .categories-list::-webkit-scrollbar {
+        display: none;
+    }
+
+
+    .quick-category,
+    .visual-category,
+    .category-item {
+        flex-shrink: 0;
+    }
+
+}
+
+/* ==============================
+   QUICK MENU RESPONSIVE
+============================== */
+
+@media (min-width: 768px) {
+
+    .quick-menu-card {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+
+    .quick-menu-content {
+        max-width: 680px;
+    }
+
+
+    .quick-menu-button {
+        flex-shrink: 0;
+    }
+
+}
+
+/* ==============================
+   PRODUCT DETAILS RESPONSIVE
+============================== */
+
+@media (min-width: 768px) {
+
+    .product-details {
+        grid-template-columns: 1.1fr 1fr;
+        align-items: start;
+    }
+
+
+    .product-details-image {
+        position: sticky;
+        top: var(--space-lg);
+    }
+
+}
+
+/* ==============================
+   OFFERS RESPONSIVE
+============================== */
+
+@media (min-width: 768px) {
+
+    .offer-page-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: stretch;
+    }
+
+
+    .offer-page-image {
+        height: 100%;
+        min-height: 280px;
+    }
+
+
+    .offer-page-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+
+    .offer-page-button {
+        align-self: flex-start;
+    }
+
+}
+
+/* ==============================
+   RESTAURANT INFORMATION RESPONSIVE
+============================== */
+
+@media (min-width: 768px) {
+
+    .restaurant-page-card {
+        min-height: 100%;
+    }
+
+
+    .restaurant-map-card {
+        grid-column: 1 / -1;
+    }
+
+
+    .restaurant-map-placeholder {
+        min-height: 300px;
+    }
+
+}

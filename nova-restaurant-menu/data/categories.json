@@ -1,0 +1,42 @@
+[
+    {
+        "id": "starters",
+        "name_ar": "المقبلات",
+        "name_en": "Starters",
+        "image": "",
+        "sort_order": 1,
+        "active": true
+    },
+    {
+        "id": "main-courses",
+        "name_ar": "الأطباق الرئيسية",
+        "name_en": "Main Courses",
+        "image": "",
+        "sort_order": 2,
+        "active": true
+    },
+    {
+        "id": "burgers",
+        "name_ar": "البرجر",
+        "name_en": "Burgers",
+        "image": "",
+        "sort_order": 3,
+        "active": true
+    },
+    {
+        "id": "desserts",
+        "name_ar": "الحلويات",
+        "name_en": "Desserts",
+        "image": "",
+        "sort_order": 4,
+        "active": true
+    },
+    {
+        "id": "drinks",
+        "name_ar": "المشروبات",
+        "name_en": "Drinks",
+        "image": "",
+        "sort_order": 5,
+        "active": true
+    }
+]
