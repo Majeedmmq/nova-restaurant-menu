@@ -1,35 +1,55 @@
 [
     {
-        "id": "nova-special",
-        "title_ar": "عرض نوفا المميز",
-        "title_en": "NOVA Special",
-        "description_ar": "استمتع بتشكيلة نوفا الخاصة بسعر مميز.",
-        "description_en": "Enjoy our special selection at an exclusive price.",
-        "image": "",
-        "original_price": 45,
-        "offer_price": 35,
+        "id": "chicken-mandi-meal",
+        "title_ar": "وجبة مندي الدجاج",
+        "title_en": "Chicken Mandi Meal",
+        "description_ar": "دجاج مندي مع سلطة خضراء وطحينة بسعر خاص.",
+        "description_en": "Chicken Mandi served with green salad and tahini at a special price.",
+        "image": "assets/images/products/Chicken/chicken-mandi.jpg",
+        "original_price": 51,
+        "offer_price": 45,
         "start_date": "2026-09-01",
         "end_date": "2026-09-30",
         "active": true,
         "products": [
-            "signature-burger"
+            "chicken-mandi",
+            "green-salad",
+            "tahini"
         ]
     },
     {
-        "id": "burger-drink-combo",
-        "title_ar": "وجبة البرجر والمشروب",
-        "title_en": "Burger & Drink Combo",
-        "description_ar": "برجر نوفا المميز مع مشروب منعش بسعر خاص.",
-        "description_en": "Signature burger served with a refreshing drink at an exclusive price.",
-        "image": "",
-        "original_price": 59,
-        "offer_price": 49,
+        "id": "meat-mandi-meal",
+        "title_ar": "وجبة مندي اللحم",
+        "title_en": "Meat Mandi Meal",
+        "description_ar": "لحم مندي مع سلطة خضراء وطحينة بسعر خاص.",
+        "description_en": "Meat Mandi served with green salad and tahini at a special price.",
+        "image": "assets/images/products/Meat/Mandi-Meat.jpg",
+        "original_price": 102,
+        "offer_price": 89,
         "start_date": "2026-09-01",
         "end_date": "2026-09-30",
         "active": true,
         "products": [
-            "signature-burger",
-            "iced-coffee"
+            "meat-mandi",
+            "green-salad",
+            "tahini"
+        ]
+    },
+    {
+        "id": "biryani-dessert-meal",
+        "title_ar": "وجبة برياني وحلى",
+        "title_en": "Biryani & Dessert Meal",
+        "description_ar": "نفر دجاج برياني مع حلا اللوتس بسعر خاص.",
+        "description_en": "Chicken Biryani served with Lotus Dessert at a special price.",
+        "image": "assets/images/products/Chicken/Chicken-Biryani.jpg",
+        "original_price": 20,
+        "offer_price": 17,
+        "start_date": "2026-09-01",
+        "end_date": "2026-09-30",
+        "active": true,
+        "products": [
+            "chicken-biryani",
+            "lotus-dessert"
         ]
     }
 ]

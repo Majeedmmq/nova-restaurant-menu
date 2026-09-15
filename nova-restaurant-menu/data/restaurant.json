@@ -1,43 +1,82 @@
 {
-    "name_ar": "مطعم ومطبخ نوفا",
-    "name_en": "NOVA Restaurant & Kitchen",
+    "name_ar": "مطعم ومطبخ الكواكب",
+    "name_en": "AlKawakib Restaurant & Kitchen",
 
     "logo": "",
 
     "description_ar": "تجربة طعام عصرية تجمع بين المذاق الرائع والأجواء الدافئة والأنيقة.",
     "description_en": "A modern dining experience where great food meets a warm and elegant atmosphere.",
 
-    "phone": "+966500000000",
+    "phone": "+966505875863",
 
-    "whatsapp": "+966500000000",
+    "whatsapp": "+966505875863",
 
     "instagram": "#",
 
-    "address_ar": "طريق الملك فهد، الرياض، المملكة العربية السعودية",
-    "address_en": "King Fahd Road, Riyadh, Saudi Arabia",
+    "address_ar": "شارع الأمير حمود، العقربية، الخبر 34445",
+    "address_en": "Prince Hamoud Street, Al-Aqrabiyah, Al-Khobar 34445",
+    "service_options_ar": [
+    "جلسات ",
+    "غرفة طعام خاصة"
+],
+
+"service_options_en": [
+    "Seatings",
+    "Private dining room"
+],
 
     "location": {
-        "city": "Riyadh",
+        "city": "Al-Khobar",
         "country": "Saudi Arabia",
         "latitude": 24.7136,
         "longitude": 46.6753,
-        "google_maps_url": "#"
+        "google_maps_url": "https://maps.app.goo.gl/T9mnDeXQAgEc8VfJA"
     },
 
-    "opening_hours": [
-        {
-            "days_ar": "السبت – الخميس",
-            "days_en": "Saturday – Thursday",
-            "open": "12:00 PM",
-            "close": "12:00 AM"
-        },
-        {
-            "days_ar": "الجمعة",
-            "days_en": "Friday",
-            "open": "1:00 PM",
-            "close": "12:00 AM"
-        }
-    ],
+  "opening_hours": [
+    {
+        "days_ar": "الأحد",
+        "days_en": "Sunday",
+        "open": "8:00 AM",
+        "close": "11:00 PM"
+    },
+    {
+        "days_ar": "الاثنين",
+        "days_en": "Monday",
+        "open": "8:00 AM",
+        "close": "11:00 PM"
+    },
+    {
+        "days_ar": "الثلاثاء",
+        "days_en": "Tuesday",
+        "open": "8:00 AM",
+        "close": "11:00 PM"
+    },
+    {
+        "days_ar": "الأربعاء",
+        "days_en": "Wednesday",
+        "open": "8:00 AM",
+        "close": "11:00 PM"
+    },
+    {
+        "days_ar": "الخميس",
+        "days_en": "Thursday",
+        "open": "8:00 AM",
+        "close": "11:00 PM"
+    },
+    {
+        "days_ar": "الجمعة",
+        "days_en": "Friday",
+        "open": "8:00 AM",
+        "close": "11:00 PM"
+    },
+    {
+        "days_ar": "السبت",
+        "days_en": "Saturday",
+        "open": "8:00 AM",
+        "close": "11:00 PM"
+    }
+],
 
     "active": true
 }
