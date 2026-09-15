@@ -313,3 +313,26 @@
     }
 
 }
+
+/* ==============================
+   MOBILE HOME - COMPACT SPACING
+============================== */
+
+@media (max-width: 767px) {
+
+    #welcome-section {
+        padding-top: 28px;
+        padding-bottom: 8px;
+    }
+
+    #search-section {
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    #quick-menu-section {
+        padding-top: 8px;
+        padding-bottom: var(--space-lg);
+    }
+
+}
