@@ -283,12 +283,7 @@
         align-self: flex-start;
     }
 
-}
 
-
-    .offer-page-button {
-        align-self: flex-start;
-    }
 
 }
 
@@ -334,5 +329,77 @@
         padding-top: 8px;
         padding-bottom: var(--space-lg);
     }
+
+    /* ==============================
+   FIX - CHICKEN BANNER HEIGHT
+============================== */
+
+.quick-category-banner {
+    width: 100%;
+    height: auto !important;
+    min-height: 0 !important;
+
+    margin-bottom: 18px;
+
+    padding: 0 !important;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background: transparent !important;
+
+    line-height: 0;
+}
+
+.quick-category-banner-image {
+    display: block;
+
+    width: 100%;
+    height: auto !important;
+    min-height: 0 !important;
+
+    object-fit: contain;
+}
+
+/* ==============================
+   QUICK MENU - MOBILE BANNER FIX
+============================== */
+
+@media (max-width: 767px) {
+
+    .quick-category-banner {
+        display: block !important;
+
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+
+        padding: 0 !important;
+        margin-bottom: 18px !important;
+
+        overflow: hidden !important;
+
+        visibility: visible !important;
+        opacity: 1 !important;
+
+        background: transparent !important;
+    }
+
+
+    .quick-category-banner-image {
+        display: block !important;
+
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+
+        visibility: visible !important;
+        opacity: 1 !important;
+
+        object-fit: contain !important;
+    }
+
+}
 
 }

@@ -56,6 +56,8 @@ const translations = {
         "popular-title": "الأطباق الأكثر شعبية",
         "specials-label": "مميز اليوم",
         "specials-title": "عروض اليوم",
+        "header-brand-name": "الكواكب",
+"header-brand-subtitle": "مطعم ومطبخ",
         "view-all-offers": "عرض جميع العروض"
     },
     en: {
@@ -91,6 +93,8 @@ const translations = {
         "popular-title": "Popular Dishes",
         "specials-label": "Special Today",
         "specials-title": "Today's Specials",
+        "header-brand-name": "AlKawakib",
+"header-brand-subtitle": "Restaurant & Kitchen",
         "view-all-offers": "View All Offers"
     }
 };
@@ -143,6 +147,10 @@ function setLanguage(language, renderPage) {
     }
 
     applyTranslations();
+
+   
+
+renderFooter();
 
     // On initial startup we only set the language here.
     // Page rendering is performed once at the bottom of the file.
@@ -428,6 +436,83 @@ async function renderHomeSpecials() {
             card.appendChild(content);
             specialsList.appendChild(card);
         });
+}
+
+
+// ==============================
+// FOOTER
+// ==============================
+
+async function renderFooter() {
+
+    const footerAddress =
+        document.getElementById("footer-address");
+
+    const footerInstagram =
+        document.getElementById("footer-instagram");
+
+    const footerWhatsapp =
+        document.getElementById("footer-whatsapp");
+
+
+    if (
+        !footerAddress &&
+        !footerInstagram &&
+        !footerWhatsapp
+    ) {
+        return;
+    }
+
+
+    const restaurant = await loadRestaurant();
+
+
+    // Address
+
+    if (footerAddress) {
+
+        footerAddress.textContent =
+            getText(
+                restaurant.address_ar,
+                restaurant.address_en
+            );
+
+    }
+
+
+    // Instagram
+
+    if (footerInstagram) {
+
+        if (
+            restaurant.instagram &&
+            restaurant.instagram !== "#"
+        ) {
+
+            footerInstagram.href =
+                restaurant.instagram;
+
+            footerInstagram.style.display = "";
+
+        } else {
+
+            footerInstagram.style.display = "none";
+
+        }
+
+    }
+
+
+    // WhatsApp
+
+    if (footerWhatsapp) {
+
+        footerWhatsapp.href =
+            "https://wa.me/" +
+            restaurant.whatsapp.replace("+", "");
+
+    }
+
 }
 
 // ==============================
@@ -898,15 +983,19 @@ async function renderProductDetails() {
 // ==============================
 
 async function renderQuickMenu() {
-    const productsContainer = document.getElementById("quick-menu-products-list");
-    if (!productsContainer) return;
 
-    const [products, categories] = await Promise.all([
-        loadProducts(),
-        loadCategories()
-    ]);
+    const productsContainer =
+        document.getElementById("quick-menu-products-list");
+
+    if (!productsContainer) {
+        return;
+    }
 
     productsContainer.innerHTML = "";
+
+    const products = await loadProducts();
+    const categories = await loadCategories();
+
 
     categories
         .filter(function (category) {
@@ -916,70 +1005,392 @@ async function renderQuickMenu() {
             return a.sort_order - b.sort_order;
         })
         .forEach(function (category) {
-            const categoryProducts = products.filter(function (product) {
-                return (
-                    product.active !== false &&
-                    product.available &&
-                    product.category === category.id
+
+            const categoryProducts =
+                products.filter(function (product) {
+
+                    return (
+                        product.active !== false &&
+                        product.available &&
+                        product.category === category.id
+                    );
+
+                });
+
+
+            if (categoryProducts.length === 0) {
+                return;
+            }
+
+
+            // ==============================
+            // CATEGORY SECTION
+            // ==============================
+
+            const categorySection =
+                document.createElement("section");
+
+            categorySection.className =
+                "quick-category-section";
+
+            categorySection.id =
+                category.id;
+
+
+            // ==============================
+            // CHECK CHICKEN CATEGORY
+            // ==============================
+
+            const isChicken =
+                (category.name_en || "")
+                    .toLowerCase() === "chicken";
+
+
+            // ==============================
+            // CHICKEN BANNER
+            // ==============================
+
+            if (isChicken) {
+
+                const banner =
+                    document.createElement("div");
+
+                banner.className =
+                    "quick-category-banner";
+
+
+                const bannerImage =
+                    document.createElement("img");
+
+                bannerImage.className =
+                    "quick-category-banner-image";
+
+                bannerImage.src =
+                    "assets/images/products/Chicken/Chicken_Banner.Jpg";
+
+                bannerImage.alt =
+                    getText(
+                        "الدجاج",
+                        "Chicken"
+                    );
+
+                bannerImage.loading =
+                    "eager";
+
+
+                banner.appendChild(
+                    bannerImage
                 );
-            });
 
-            if (categoryProducts.length === 0) return;
 
-            const categorySection = document.createElement("section");
-            categorySection.className = "quick-category-section";
-            categorySection.id = category.id;
+                categorySection.appendChild(
+                    banner
+                );
 
-            const categoryTitle = document.createElement("h2");
-            categoryTitle.className = "quick-category-title";
-            categoryTitle.textContent = getText(
-                category.name_ar,
-                category.name_en
+            } else {
+
+                // ==============================
+                // CATEGORY TITLE
+                // ==============================
+
+                const categoryTitle =
+                    document.createElement("h2");
+
+                categoryTitle.className =
+                    "quick-category-title";
+
+                categoryTitle.textContent =
+                    getText(
+                        category.name_ar,
+                        category.name_en
+                    );
+
+
+                categorySection.appendChild(
+                    categoryTitle
+                );
+
+            }
+
+
+            // ==============================
+            // PRODUCTS LIST
+            // ==============================
+
+            const productsList =
+                document.createElement("div");
+
+            productsList.className =
+                "quick-products-list";
+
+
+            categoryProducts.forEach(
+                function (product) {
+
+                    const productItem =
+                        document.createElement("a");
+
+                    productItem.href =
+                        "product-details.html?id=" +
+                        product.id;
+
+
+                    // ==============================
+                    // CHICKEN PREMIUM CARD
+                    // ==============================
+
+                    if (isChicken) {
+
+                        productItem.className =
+                            "quick-menu-item quick-menu-item-premium";
+
+
+                        // IMAGE
+
+                        const image =
+                            document.createElement("div");
+
+                        image.className =
+                            "quick-menu-item-image";
+
+
+                        if (product.image) {
+
+                            const img =
+                                document.createElement("img");
+
+                            img.src =
+                                product.image;
+
+                            img.alt =
+                                getText(
+                                    product.name_ar,
+                                    product.name_en ||
+                                    product.name_ar
+                                );
+
+                            img.loading =
+                                "lazy";
+
+                            image.appendChild(
+                                img
+                            );
+
+                        } else {
+
+                            const imagePlaceholder =
+                                document.createElement("span");
+
+                            imagePlaceholder.textContent =
+                                "Image";
+
+                            image.appendChild(
+                                imagePlaceholder
+                            );
+
+                        }
+
+
+                        // CONTENT
+
+                        const content =
+                            document.createElement("div");
+
+                        content.className =
+                            "quick-menu-item-content";
+
+
+                        // NAME
+
+                        const name =
+                            document.createElement("h3");
+
+                        name.className =
+                            "quick-menu-item-name";
+
+                        name.textContent =
+                            getText(
+                                product.name_ar,
+                                product.name_en ||
+                                product.name_ar
+                            );
+
+
+                        // DESCRIPTION
+
+                        const description =
+                            document.createElement("p");
+
+                        description.className =
+                            "quick-menu-item-description";
+
+                        description.textContent =
+                            getText(
+                                product.description_ar || "",
+                                product.description_en ||
+                                product.description_ar ||
+                                ""
+                            );
+
+
+                        content.appendChild(
+                            name
+                        );
+
+                        content.appendChild(
+                            description
+                        );
+
+
+                        // PRICE
+
+                        const price =
+                            document.createElement("span");
+
+                        price.className =
+                            "quick-menu-item-price";
+
+                        price.textContent =
+                            getText(
+                                product.price + " ر.س",
+                                product.price + " SAR"
+                            );
+
+
+                        // ARROW
+
+                        const arrow =
+                            document.createElement("span");
+
+                        arrow.className =
+                            "quick-menu-item-arrow";
+
+                        arrow.textContent =
+                            "›";
+
+
+                        // BUILD CARD
+
+                        productItem.appendChild(
+                            image
+                        );
+
+                        productItem.appendChild(
+                            content
+                        );
+
+                        productItem.appendChild(
+                            price
+                        );
+
+                        productItem.appendChild(
+                            arrow
+                        );
+
+                    } else {
+
+                        // ==============================
+                        // OTHER CATEGORIES
+                        // ==============================
+
+                        productItem.className =
+                            "quick-menu-item";
+
+
+                        const content =
+                            document.createElement("div");
+
+                        content.className =
+                            "quick-menu-item-content";
+
+
+                        // NAME
+
+                        const name =
+                            document.createElement("h3");
+
+                        name.className =
+                            "quick-menu-item-name";
+
+                        name.textContent =
+                            getText(
+                                product.name_ar,
+                                product.name_en ||
+                                product.name_ar
+                            );
+
+
+                        // DESCRIPTION
+
+                        const description =
+                            document.createElement("p");
+
+                        description.className =
+                            "quick-menu-item-description";
+
+                        description.textContent =
+                            getText(
+                                product.description_ar || "",
+                                product.description_en ||
+                                product.description_ar ||
+                                ""
+                            );
+
+
+                        content.appendChild(
+                            name
+                        );
+
+                        content.appendChild(
+                            description
+                        );
+
+
+                        // PRICE
+
+                        const price =
+                            document.createElement("span");
+
+                        price.className =
+                            "quick-menu-item-price";
+
+                        price.textContent =
+                            getText(
+                                product.price + " ر.س",
+                                product.price + " SAR"
+                            );
+
+
+                        productItem.appendChild(
+                            content
+                        );
+
+                        productItem.appendChild(
+                            price
+                        );
+
+                    }
+
+
+                    productsList.appendChild(
+                        productItem
+                    );
+
+                }
             );
 
-            const productsList = document.createElement("div");
-            productsList.className = "quick-products-list";
 
-            categoryProducts.forEach(function (product) {
-                const productItem = document.createElement("a");
-                productItem.href = "product-details.html?id=" + product.id;
-                productItem.className = "quick-menu-item";
+            categorySection.appendChild(
+                productsList
+            );
 
-                const content = document.createElement("div");
-                content.className = "quick-menu-item-content";
 
-                const name = document.createElement("h3");
-                name.className = "quick-menu-item-name";
-                name.textContent = getText(
-                    product.name_ar,
-                    product.name_en || product.name_ar
-                );
+            productsContainer.appendChild(
+                categorySection
+            );
 
-                const description = document.createElement("p");
-                description.className = "quick-menu-item-description";
-                description.textContent = getText(
-                    product.description_ar || "",
-                    product.description_en || product.description_ar || ""
-                );
-
-                const price = document.createElement("span");
-                price.className = "quick-menu-item-price";
-                price.textContent = getText(
-                    product.price + " ر.س",
-                    product.price + " SAR"
-                );
-
-                content.appendChild(name);
-                content.appendChild(description);
-                productItem.appendChild(content);
-                productItem.appendChild(price);
-                productsList.appendChild(productItem);
-            });
-
-            categorySection.appendChild(categoryTitle);
-            categorySection.appendChild(productsList);
-            productsContainer.appendChild(categorySection);
         });
+
 }
 
 // ==============================
