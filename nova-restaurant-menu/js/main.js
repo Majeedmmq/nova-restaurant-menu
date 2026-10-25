@@ -35,18 +35,18 @@ const translations = {
         "restaurant-back": "رجوع",
         "restaurant-label": "زورونا",
         "restaurant-title": "معلومات المطعم",
-        "restaurant-description": "كل ما تحتاج معرفته عن مطعم ومطبخ الكواكب.",
+        "restaurant-description": "كل ما تحتاج معرفته عن مطعم ومطبخ  برق الكواكب.",
         "footer-brand-subtitle": "مطعم ومطبخ",
         "footer-hours": "يوميًا: 8:00 صباحًا – 11:00 مساءً",
         "footer-instagram": "إنستغرام",
         "footer-whatsapp": "واتساب",
-        "footer-copyright": "© 2026 مطعم ومطبخ الكواكب. جميع الحقوق محفوظة.",
+        "footer-copyright": "© 2026 مطعم ومطبخ برق الكواكب. جميع الحقوق محفوظة.",
         "footer-address": "شارع الأمير حمود، العقربية، الخبر 34445",
         "restaurant-visit": "زورونا",
         "restaurant-info-title": "معلومات المطعم",
-        "restaurant-info-description": "كل ما تحتاج معرفته عن مطعم ومطبخ الكواكب.",
+        "restaurant-info-description": "كل ما تحتاج معرفته عن مطعم ومطبخ برق الكواكب.",
         "home-greeting": "مساء الخير",
-        "home-title": "مرحبًا بكم في الكواكب",
+        "home-title": "مرحبًا بكم في برق الكواكب",
         "home-description": "اكتشف قائمتنا واستمتع بتجربة شهية.",
         "search-button": "بحث",
         "search-placeholder": "ابحث في القائمة...",
@@ -56,8 +56,15 @@ const translations = {
         "popular-title": "الأطباق الأكثر شعبية",
         "specials-label": "مميز اليوم",
         "specials-title": "عروض اليوم",
-        "header-brand-name": "الكواكب",
+        "header-brand-name": "برق الكواكب",
+        "brand-name": "برق الكواكب",
 "header-brand-subtitle": "مطعم ومطبخ",
+
+"footer-snapchat": "سناب شات",
+"footer-facebook": "فيسبوك",
+"footer-tiktok": "تيك توك",
+
+
         "view-all-offers": "عرض جميع العروض"
     },
     en: {
@@ -72,19 +79,19 @@ const translations = {
         "restaurant-back": "Back",
         "restaurant-label": "Visit Us",
         "restaurant-title": "Restaurant Information",
-        "restaurant-description": "Everything you need to know about AlKawakib.",
+        "restaurant-description": "Everything you need to know about Barq AlKawakib.",
         "footer-brand-subtitle": "Restaurant & Kitchen",
         "footer-hours": "Daily: 8:00 AM – 11:00 PM",
         "footer-instagram": "Instagram",
         "footer-whatsapp": "WhatsApp",
-        "footer-copyright": "© 2026 AlKawakib Restaurant & Kitchen. All rights reserved.",
+        "footer-copyright": "© 2026 Barq AlKawakib Restaurant & Kitchen. All rights reserved.",
         "footer-address": "Prince Hamoud Street, Al-Aqrabiyah, Al-Khobar 34445",
         "restaurant-visit": "Visit Us",
         "restaurant-info-title": "Restaurant Information",
-        "restaurant-info-description": "Everything you need to know about AlKawakib.",
+        "restaurant-info-description": "Everything you need to know about Barq AlKawakib.",
         "home-greeting": "Good Evening",
-        "home-title": "Welcome to AlKawakib",
-        "home-description": "Discover our menu and explore something delicious.",
+            "home-title": "Welcome to Barq AlKawakib",
+            "home-description": "Discover our menu and explore something delicious.",
         "search-button": "Search",
         "search-placeholder": "Search the menu...",
         "categories-label": "Explore",
@@ -93,8 +100,14 @@ const translations = {
         "popular-title": "Popular Dishes",
         "specials-label": "Special Today",
         "specials-title": "Today's Specials",
-        "header-brand-name": "AlKawakib",
+        "header-brand-name": "Barq AlKawakib",
 "header-brand-subtitle": "Restaurant & Kitchen",
+"brand-name": "Barq AlKawakib",
+
+"footer-snapchat": "Snapchat",
+"footer-facebook": "Facebook",
+"footer-tiktok": "TikTok",
+
         "view-all-offers": "View All Offers"
     }
 };
@@ -742,7 +755,7 @@ async function renderRestaurantPage() {
     socialLabel.textContent = getText("التواصل الاجتماعي", "Social Media");
 
     const socialTitle = document.createElement("h2");
-    socialTitle.textContent = getText("تابع الكواكب", "Follow AlKawakib");
+    socialTitle.textContent = getText("تابع برق الكواكب", "Follow Barq AlKawakib");
 
     const socialLinks = document.createElement("div");
     socialLinks.className = "restaurant-page-social";
@@ -1046,73 +1059,75 @@ async function renderQuickMenu() {
                     .toLowerCase() === "chicken";
 
 
+            
             // ==============================
-            // CHICKEN BANNER
+            // CATEGORY BANNERS
             // ==============================
+
+            const categoryBannerPaths = {
+                chicken: "assets/images/products/Chicken/Chicken_Banner.Jpg",
+                meat: "assets/images/products/Chicken/Meat_Banner.png",
+                traditional: "assets/images/products/Chicken/Traditional_Banner.png",
+                appetizer: "assets/images/products/Chicken/Appetizer_Banner.png",
+                dessert: "assets/images/products/Chicken/Dessert_Banner.png"
+            };
+
+            const categoryBannerAlt = {
+                chicken: getText("الدجاج", "Chicken"),
+                meat: getText("اللحوم", "Meat"),
+                traditional: getText("الإيدامات", "Traditional Dishes"),
+                appetizer: getText("المقبلات", "Appetizers"),
+                dessert: getText("الحلويات", "Desserts")
+            };
+
+            const categoryNameAr = (category.name_ar || "").trim();
+            const categoryNameEn = (category.name_en || "").trim().toLowerCase();
+
+            let bannerKey = null;
 
             if (isChicken) {
+                bannerKey = "chicken";
+            } else if (categoryNameAr.includes("لحوم") || categoryNameEn === "meat") {
+                bannerKey = "meat";
+            } else if (categoryNameAr.includes("إيدام") || categoryNameAr.includes("ايدام") ||
+                       categoryNameEn.includes("traditional")) {
+                bannerKey = "traditional";
+            } else if (categoryNameAr.includes("مقبلات") || categoryNameEn.includes("appetizer")) {
+                bannerKey = "appetizer";
+            } else if (categoryNameAr.includes("حلويات") || categoryNameEn.includes("dessert")) {
+                bannerKey = "dessert";
+            }
 
-                const banner =
-                    document.createElement("div");
+            if (bannerKey) {
+                const banner = document.createElement("div");
+                banner.className = "quick-category-banner";
 
-                banner.className =
-                    "quick-category-banner";
+                const bannerImage = document.createElement("img");
+                bannerImage.className = "quick-category-banner-image";
+                bannerImage.src = categoryBannerPaths[bannerKey];
+                bannerImage.alt = categoryBannerAlt[bannerKey];
+                bannerImage.loading = "eager";
 
-
-                const bannerImage =
-                    document.createElement("img");
-
-                bannerImage.className =
-                    "quick-category-banner-image";
-
-                bannerImage.src =
-                    "assets/images/products/Chicken/Chicken_Banner.Jpg";
-
-                bannerImage.alt =
-                    getText(
-                        "الدجاج",
-                        "Chicken"
-                    );
-
-                bannerImage.loading =
-                    "eager";
-
-
-                banner.appendChild(
-                    bannerImage
-                );
-
-
-                categorySection.appendChild(
-                    banner
-                );
-
+                banner.appendChild(bannerImage);
+                categorySection.appendChild(banner);
             } else {
-
                 // ==============================
                 // CATEGORY TITLE
                 // ==============================
 
-                const categoryTitle =
-                    document.createElement("h2");
-
-                categoryTitle.className =
-                    "quick-category-title";
-
-                categoryTitle.textContent =
-                    getText(
-                        category.name_ar,
-                        category.name_en
-                    );
-
-
-                categorySection.appendChild(
-                    categoryTitle
+                const categoryTitle = document.createElement("h2");
+                categoryTitle.className = "quick-category-title";
+                categoryTitle.textContent = getText(
+                    category.name_ar,
+                    category.name_en
                 );
 
+                categorySection.appendChild(categoryTitle);
             }
 
 
+
+           
             // ==============================
             // PRODUCTS LIST
             // ==============================
@@ -1123,271 +1138,128 @@ async function renderQuickMenu() {
             productsList.className =
                 "quick-products-list";
 
+            categoryProducts.forEach(function (product) {
 
-            categoryProducts.forEach(
-                function (product) {
+                const productItem =
+                    document.createElement("a");
 
-                    const productItem =
-                        document.createElement("a");
+                productItem.href =
+                    "product-details.html?id=" + product.id;
 
-                    productItem.href =
-                        "product-details.html?id=" +
-                        product.id;
+                productItem.className =
+                    "quick-menu-item quick-menu-item-premium";
 
+                // IMAGE
 
-                    // ==============================
-                    // CHICKEN PREMIUM CARD
-                    // ==============================
+                const image =
+                    document.createElement("div");
 
-                    if (isChicken) {
+                image.className =
+                    "quick-menu-item-image";
 
-                        productItem.className =
-                            "quick-menu-item quick-menu-item-premium";
+                if (product.image) {
 
+                    const img =
+                        document.createElement("img");
 
-                        // IMAGE
+                    img.src = product.image;
 
-                        const image =
-                            document.createElement("div");
-
-                        image.className =
-                            "quick-menu-item-image";
-
-
-                        if (product.image) {
-
-                            const img =
-                                document.createElement("img");
-
-                            img.src =
-                                product.image;
-
-                            img.alt =
-                                getText(
-                                    product.name_ar,
-                                    product.name_en ||
-                                    product.name_ar
-                                );
-
-                            img.loading =
-                                "lazy";
-
-                            image.appendChild(
-                                img
-                            );
-
-                        } else {
-
-                            const imagePlaceholder =
-                                document.createElement("span");
-
-                            imagePlaceholder.textContent =
-                                "Image";
-
-                            image.appendChild(
-                                imagePlaceholder
-                            );
-
-                        }
-
-
-                        // CONTENT
-
-                        const content =
-                            document.createElement("div");
-
-                        content.className =
-                            "quick-menu-item-content";
-
-
-                        // NAME
-
-                        const name =
-                            document.createElement("h3");
-
-                        name.className =
-                            "quick-menu-item-name";
-
-                        name.textContent =
-                            getText(
-                                product.name_ar,
-                                product.name_en ||
-                                product.name_ar
-                            );
-
-
-                        // DESCRIPTION
-
-                        const description =
-                            document.createElement("p");
-
-                        description.className =
-                            "quick-menu-item-description";
-
-                        description.textContent =
-                            getText(
-                                product.description_ar || "",
-                                product.description_en ||
-                                product.description_ar ||
-                                ""
-                            );
-
-
-                        content.appendChild(
-                            name
-                        );
-
-                        content.appendChild(
-                            description
-                        );
-
-
-                        // PRICE
-
-                        const price =
-                            document.createElement("span");
-
-                        price.className =
-                            "quick-menu-item-price";
-
-                        price.textContent =
-                            getText(
-                                product.price + " ر.س",
-                                product.price + " SAR"
-                            );
-
-
-                        // ARROW
-
-                        const arrow =
-                            document.createElement("span");
-
-                        arrow.className =
-                            "quick-menu-item-arrow";
-
-                        arrow.textContent =
-                            "›";
-
-
-                        // BUILD CARD
-
-                        productItem.appendChild(
-                            image
-                        );
-
-                        productItem.appendChild(
-                            content
-                        );
-
-                        productItem.appendChild(
-                            price
-                        );
-
-                        productItem.appendChild(
-                            arrow
-                        );
-
-                    } else {
-
-                        // ==============================
-                        // OTHER CATEGORIES
-                        // ==============================
-
-                        productItem.className =
-                            "quick-menu-item";
-
-
-                        const content =
-                            document.createElement("div");
-
-                        content.className =
-                            "quick-menu-item-content";
-
-
-                        // NAME
-
-                        const name =
-                            document.createElement("h3");
-
-                        name.className =
-                            "quick-menu-item-name";
-
-                        name.textContent =
-                            getText(
-                                product.name_ar,
-                                product.name_en ||
-                                product.name_ar
-                            );
-
-
-                        // DESCRIPTION
-
-                        const description =
-                            document.createElement("p");
-
-                        description.className =
-                            "quick-menu-item-description";
-
-                        description.textContent =
-                            getText(
-                                product.description_ar || "",
-                                product.description_en ||
-                                product.description_ar ||
-                                ""
-                            );
-
-
-                        content.appendChild(
-                            name
-                        );
-
-                        content.appendChild(
-                            description
-                        );
-
-
-                        // PRICE
-
-                        const price =
-                            document.createElement("span");
-
-                        price.className =
-                            "quick-menu-item-price";
-
-                        price.textContent =
-                            getText(
-                                product.price + " ر.س",
-                                product.price + " SAR"
-                            );
-
-
-                        productItem.appendChild(
-                            content
-                        );
-
-                        productItem.appendChild(
-                            price
-                        );
-
-                    }
-
-
-                    productsList.appendChild(
-                        productItem
+                    img.alt = getText(
+                        product.name_ar,
+                        product.name_en || product.name_ar
                     );
 
+                    img.loading = "lazy";
+
+                    image.appendChild(img);
+
+                } else {
+
+                    const imagePlaceholder =
+                        document.createElement("span");
+
+                    imagePlaceholder.textContent =
+                        "Image";
+
+                    image.appendChild(imagePlaceholder);
                 }
-            );
 
+                // CONTENT
 
-            categorySection.appendChild(
-                productsList
-            );
+                const content =
+                    document.createElement("div");
 
+                content.className =
+                    "quick-menu-item-content";
 
-            productsContainer.appendChild(
-                categorySection
-            );
+                // NAME
+
+                const name =
+                    document.createElement("h3");
+
+                name.className =
+                    "quick-menu-item-name";
+
+                name.textContent = getText(
+                    product.name_ar,
+                    product.name_en || product.name_ar
+                );
+
+                // DESCRIPTION
+
+                const description =
+                    document.createElement("p");
+
+                description.className =
+                    "quick-menu-item-description";
+
+                description.textContent = getText(
+                    product.description_ar || "",
+                    product.description_en ||
+                    product.description_ar ||
+                    ""
+                );
+
+                content.appendChild(name);
+                content.appendChild(description);
+
+                // PRICE
+
+                const price =
+                    document.createElement("span");
+
+                price.className =
+                    "quick-menu-item-price";
+
+                price.textContent = getText(
+                    product.price + " ر.س",
+                    product.price + " SAR"
+                );
+
+                // ARROW
+
+                const arrow =
+                    document.createElement("span");
+
+                arrow.className =
+                    "quick-menu-item-arrow";
+
+                arrow.textContent = "›";
+
+                // BUILD CARD
+
+                productItem.appendChild(image);
+                productItem.appendChild(content);
+                productItem.appendChild(price);
+                productItem.appendChild(arrow);
+
+                productsList.appendChild(productItem);
+            });
+
+            categorySection.appendChild(productsList);
+
+            productsContainer.appendChild(categorySection);
+
 
         });
 
@@ -1631,32 +1503,99 @@ async function renderHomeRestaurantInfo() {
     const callButton = document.createElement("a");
     callButton.href = "tel:" + restaurant.phone;
     callButton.className = "restaurant-button";
-    callButton.textContent = getText("اتصال", "Call");
-
+callButton.innerHTML =
+    '<span class="restaurant-button-icon" aria-hidden="true">☎</span>' +
+    '<span>' + getText("اتصال", "Call") + '</span>';
     const whatsappButton = document.createElement("a");
     whatsappButton.href =
         "https://wa.me/" + restaurant.whatsapp.replace("+", "");
     whatsappButton.target = "_blank";
     whatsappButton.rel = "noopener";
     whatsappButton.className = "restaurant-button";
-    whatsappButton.textContent = getText("واتساب", "WhatsApp");
-
+whatsappButton.innerHTML =
+    '<span class="restaurant-button-icon" aria-hidden="true">◉</span>' +
+    '<span>' + getText("واتساب", "WhatsApp") + '</span>';
     const infoButton = document.createElement("a");
     infoButton.href = "restaurant.html";
     infoButton.className = "restaurant-button";
-    infoButton.textContent = getText(
+   infoButton.innerHTML =
+    '<span class="restaurant-button-icon" aria-hidden="true">ⓘ</span>' +
+    '<span>' + getText(
         "معلومات المطعم",
         "Restaurant Information"
-    );
+    ) + '</span>';
 
     actions.appendChild(callButton);
     actions.appendChild(whatsappButton);
     actions.appendChild(infoButton);
 
-    restaurantContainer.appendChild(title);
-    restaurantContainer.appendChild(description);
-    restaurantContainer.appendChild(address);
-    restaurantContainer.appendChild(actions);
+   
+restaurantContainer.appendChild(title);
+restaurantContainer.appendChild(description);
+restaurantContainer.appendChild(address);
+restaurantContainer.appendChild(actions);
+
+// Google Maps section
+const mapSection = document.createElement("div");
+mapSection.className = "restaurant-map-section";
+
+const mapTitle = document.createElement("h3");
+mapTitle.textContent = getText(
+    "موقعنا على الخريطة",
+    "Our Location on the Map"
+);
+
+const mapButton = document.createElement("a");
+mapButton.className = "restaurant-button";
+mapButton.target = "_blank";
+mapButton.rel = "noopener noreferrer";
+mapButton.href =
+    restaurant.location?.google_maps_url ||
+    `https://www.google.com/maps?q=${restaurant.location.latitude},${restaurant.location.longitude}`;
+
+mapButton.innerHTML =
+    '<span class="restaurant-button-icon" aria-hidden="true">📍</span>' +
+    '<span>' + getText(
+        "فتح الموقع على خرائط Google",
+        "Open in Google Maps"
+    ) + '</span>';
+
+
+mapSection.appendChild(mapTitle);
+
+// Embedded Google Map
+const mapFrame = document.createElement("iframe");
+mapFrame.className = "restaurant-map-frame";
+mapFrame.src =
+    "https://maps.google.com/maps?q=" +
+    encodeURIComponent(
+        getText(restaurant.address_ar, restaurant.address_en)
+    ) +
+    "&output=embed";
+
+mapFrame.title = getText(
+    "خريطة موقع المطعم",
+    "Restaurant location map"
+);
+mapFrame.loading = "lazy";
+mapFrame.referrerPolicy = "no-referrer-when-downgrade";
+mapFrame.allowFullscreen = true;
+
+const directionsButton = document.createElement("a");
+directionsButton.className = "restaurant-button";
+directionsButton.href = restaurant.location.google_maps_url;
+directionsButton.target = "_blank";
+directionsButton.rel = "noopener noreferrer";
+directionsButton.textContent = getText(
+    "الاتجاهات إلى المطعم",
+    "Get Directions"
+);
+
+mapSection.appendChild(mapFrame);
+mapSection.appendChild(directionsButton);
+restaurantContainer.appendChild(mapSection);
+
+
 }
 
 // ==============================

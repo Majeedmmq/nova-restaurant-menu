@@ -388,18 +388,23 @@
 
 
     .quick-category-banner-image {
-        display: block !important;
+    display: block !important;
+    position: static !important;
 
-        width: 100% !important;
-        height: auto !important;
-        min-height: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
 
-        visibility: visible !important;
-        opacity: 1 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 
-        object-fit: contain !important;
-    }
+    object-fit: contain !important;
+}
 
+}
+
+#quick-menu-content {
+    padding-top: 8px !important;
 }
 
 }
