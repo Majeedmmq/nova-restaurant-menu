@@ -281,7 +281,7 @@ async function renderHomeCategories() {
         .forEach(function (category) {
             const link = document.createElement("a");
             link.href = "visual-menu.html#" + category.id;
-            link.className = "category-item";
+            link.className = "quick-category";
             link.textContent = getText(category.name_ar, category.name_en);
             categoriesList.appendChild(link);
         });

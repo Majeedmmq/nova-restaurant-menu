@@ -141,7 +141,8 @@
 ============================== */
 
 #categories-section {
-    padding-block: var(--space-xl);
+    padding-top: 8px;
+    padding-bottom: var(--space-xl);
 }
 
 .section-heading {
@@ -1560,6 +1561,7 @@
     align-items: center;
     justify-content: space-between;
     gap: var(--space-md);
+    position: relative;
 }
 
 
@@ -1568,6 +1570,7 @@
     flex-direction: column;
     align-items: center;
     gap: 6px;
+    padding-top: 22px;
 }
 
 .home-brand-logo {
@@ -1575,6 +1578,13 @@
     width: 80px;
     height: 80px;
     object-fit: contain;
+    margin-inline: auto;
+    
+
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
 }
 
 
